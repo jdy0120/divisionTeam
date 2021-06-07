@@ -1,9 +1,11 @@
+import { tierMMR, winPercentMMR } from '../../assets/gameEnv';
+
 const getUserInfoApi = async () => {
   const response = await fetch('',)
 
 }
 const winRateMMr = () => {
-
+  //winrate - 50 * winPercentMMr
 }
 
 const calculateMMR = () => {
