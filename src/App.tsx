@@ -4,7 +4,7 @@ import InsertUser from './components/InsertUser';
 function App() {
   return (
     <>
-      <InsertUser />
+      <InsertUser /> 
     </>
   );
 }
