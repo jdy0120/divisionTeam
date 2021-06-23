@@ -4,10 +4,13 @@ import { getUserAccountId } from './calculate/getUserInfo';
 import styled from 'styled-components';
 
 const divUserId = (combinedID:string): string[] => {
+  if (combinedID === '') {
+    return []
+  }
   const regExp = /([a-z|A-z|0-9|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]){1,}(님)/g
   const divisionId = combinedID.match(regExp)
   if (divisionId === null) {
-    return []
+    return [combinedID]
   } else {
     return divisionId;
   }
@@ -40,21 +43,21 @@ const InsertUser = () => {
         }
       });
 
+    divisionId?.map((element) => {
+      console.log(getUserAccountId(element))
+    });
+
     // setIdList가 없어지고 requestApi로 받아와 setUserInfoList로 상태변경
-    setIdList([...idList, ...divisionId])
+    setIdList([...idList, ...divisionId]);
   }
 
   React.useEffect(() => {
-    console.log(idList);
-    idList?.map((element:string) => {
-      console.log(getUserAccountId(element))
-    })
   },[idList])
 
   return(
     <>
       <input type="text" onChange={(e) => {setIdState(e.target.value)}} />
-      <button onClick={addId}></button>
+      <button onClick={addId}>{`검색`}</button>
       {idList?.map((element,index) => {
         return (
           <p key={index}>{element}</p>
