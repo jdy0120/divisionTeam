@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserInfo } from '../../types/type';
+import { getUserAccountId } from './calculate/getUserInfo';
 import styled from 'styled-components';
 
 const divUserId = (combinedID:string): string[] => {
@@ -30,7 +31,6 @@ const InsertUser = () => {
   const [idState, setIdState] = React.useState<string>('');
   const [idList, setIdList] = React.useState<string[]>([]);
 
-
   const addId = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     
     const divisionId = divUserId(idState)
@@ -46,7 +46,11 @@ const InsertUser = () => {
 
   React.useEffect(() => {
     console.log(idList);
+    idList?.map((element:string) => {
+      console.log(getUserAccountId(element))
+    })
   },[idList])
+
   return(
     <>
       <input type="text" onChange={(e) => {setIdState(e.target.value)}} />
