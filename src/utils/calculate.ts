@@ -1,5 +1,5 @@
-import { MaterialMMR } from '../../../types/type';
-import { rankMMR, tierMMR, winPercentMMR } from '../../assets/gameEnv';
+import { MaterialMMR } from '../../types/type';
+import { rankMMR, tierMMR, winPercentMMR } from '../assets/gameEnv';
 
 const winRateMMr = (wins:number,losses:number):number => {
   const winrate = Math.round((wins/(wins+losses)*100) * 10) / 10

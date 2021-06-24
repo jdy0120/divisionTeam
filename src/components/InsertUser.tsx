@@ -1,7 +1,8 @@
 import React from 'react';
 import { UserInfo, MaterialMMR } from '../../types/type';
-import { getUserInfo, getUserAccountId } from './calculate/getUserInfo';
-import { calculate } from './calculate/calculate';
+import { getUserInfo, getUserAccountId } from '../utils/getUserInfo';
+import { calculate } from '../utils/calculate';
+import DivTeam from './DivTeam';
 import styled from 'styled-components';
 
 const divUserId = (combinedID:string): string[] => {
@@ -20,6 +21,7 @@ const divUserId = (combinedID:string): string[] => {
 const InsertUser = () => {
   const [userInfoList, setUserInfoList] = React.useState<UserInfo[]>([]);
   const [idState, setIdState] = React.useState<string>('')
+  const [runDivTeam, setRunDivTeam] = React.useState<boolean>(false);
 
   const addId = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(divUserId(idState));
@@ -49,24 +51,42 @@ const InsertUser = () => {
           ])
         }
       })
-      
     });
   }
 
-  console.log(userInfoList)
+  const clickDivTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setRunDivTeam(true)
+    // 팀나누는 계산
+  }
+
+  const clickSearchTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setRunDivTeam(false)
+  }
+
+  
   React.useEffect(() => {
+    console.log(userInfoList)
   },[])
 
   return(
     <>
-      <input type="text" onChange={(e) => {setIdState(e.target.value)}} />
-      <button onClick={addId}>{`검색`}</button>
-      {userInfoList?.map((element,index) => {
-        return (
-          <p key={index}>{element.userId}</p>
-        );
-      })}
-      <button>{'팀'}</button>
+      {runDivTeam === false ? 
+        <div>
+          <input type="text" onChange={(e) => {setIdState(e.target.value)}} />
+          <button onClick={addId}>{`검색`}</button>
+          {userInfoList?.map((element,index) => {
+            return (
+              <p key={index}>{element.userId}</p>
+            );
+          })}
+          <button onClick={clickDivTeam}>{'팀'}</button>
+        </div>
+       :
+       <div>
+         <DivTeam userInfoList={userInfoList} />
+         <button onClick={clickSearchTeam}>{'인원 수정'}</button>
+       </div>
+      }
     </>
   );
 }

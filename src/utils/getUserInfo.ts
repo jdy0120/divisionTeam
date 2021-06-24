@@ -1,4 +1,4 @@
-import { API_KEY } from '../../assets/config'
+import { API_KEY } from '../assets/config'
 
 export const getUserAccountId = async (userId:string): Promise<any>=> {
     const response = await fetch(`/lol/summoner/v4/summoners/by-name/${userId}?api_key=${API_KEY}`)
