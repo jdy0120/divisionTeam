@@ -1,7 +1,8 @@
 import { tierMMR, winPercentMMR } from '../../assets/gameEnv';
 
-const winRateMMr = () => {
-  //winrate - 50 * winPercentMMr
+const winRateMMr = (wins:number,losses:number) => {
+  
+  //(winrate - 50) * winPercentMMr
 }
 
 const calculateMMR = () => {

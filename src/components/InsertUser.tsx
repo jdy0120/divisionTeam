@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserInfo } from '../../types/type';
-import { getUserAccountId } from './calculate/getUserInfo';
+import { getUserInfo, getUserAccountId } from './calculate/getUserInfo';
 import styled from 'styled-components';
 
 const divUserId = (combinedID:string): string[] => {
@@ -17,50 +17,48 @@ const divUserId = (combinedID:string): string[] => {
 }
 
 const InsertUser = () => {
-  const [userInfoList, setUserInfoList] = React.useState<UserInfo[]>([
-    {
-      userId: 'doyeon',
-      tier: 'Bronze',
-      position: 'Mid',
-      mmr: 0,
-    },
-    {
-      userId: 'miya',
-      tier: 'Bronze',
-      position: 'Mid',
-      mmr: 0,
-    },
-  ]);
-  const [idState, setIdState] = React.useState<string>('');
-  const [idList, setIdList] = React.useState<string[]>([]);
+  const [userInfoList, setUserInfoList] = React.useState<UserInfo[]>([]);
+  const [idState, setIdState] = React.useState<string>('')
 
   const addId = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    
-    const divisionId = divUserId(idState)
-      .filter((element) => {
-        if (idList.indexOf(element) === -1) {
-          return true
+    console.log(divUserId(idState));
+    divUserId(idState)?.map(async(element) => {
+      const {id,name} =  await getUserAccountId(element)
+      
+      const userInfo = await getUserInfo(id)
+      console.log(userInfo)
+      
+      userInfo.map((el:any) => {
+        if (el.queueType === "RANKED_SOLO_5x5") {
+          const { tier,rank,wins,losses } = el
+          setUserInfoList([
+            ...userInfoList,
+            {
+              userId: name,
+              tier,
+              rank,
+              wins,
+              losses,
+              mmr:0
+            }
+          ])
         }
-      });
-
-    divisionId?.map((element) => {
-      console.log(getUserAccountId(element))
+      })
+      
     });
-
-    // setIdList가 없어지고 requestApi로 받아와 setUserInfoList로 상태변경
-    setIdList([...idList, ...divisionId]);
   }
 
+  console.log(userInfoList)
   React.useEffect(() => {
-  },[idList])
+  },[])
 
   return(
     <>
       <input type="text" onChange={(e) => {setIdState(e.target.value)}} />
       <button onClick={addId}>{`검색`}</button>
-      {idList?.map((element,index) => {
+      {userInfoList?.map((element,index) => {
         return (
-          <p key={index}>{element}</p>
+          <p key={index}>{element.userId}</p>
         );
       })}
       <button>{'팀'}</button>
