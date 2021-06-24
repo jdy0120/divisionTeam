@@ -9,6 +9,15 @@ export type UserInfo = {
   rank: string,
   wins: number,
   losses: number,
+  leaguePoints: number,
   position?: Position,
   mmr: number,
+}
+
+export type MaterialMMR = {
+  tier: Tier,
+  rank: string,
+  wins: number,
+  losses: number,
+  leaguePoints: number,
 }

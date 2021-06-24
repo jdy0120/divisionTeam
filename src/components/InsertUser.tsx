@@ -1,6 +1,7 @@
 import React from 'react';
-import { UserInfo } from '../../types/type';
+import { UserInfo, MaterialMMR } from '../../types/type';
 import { getUserInfo, getUserAccountId } from './calculate/getUserInfo';
+import { calculate } from './calculate/calculate';
 import styled from 'styled-components';
 
 const divUserId = (combinedID:string): string[] => {
@@ -30,7 +31,10 @@ const InsertUser = () => {
       
       userInfo.map((el:any) => {
         if (el.queueType === "RANKED_SOLO_5x5") {
-          const { tier,rank,wins,losses } = el
+          const { tier,rank,wins,losses,leaguePoints } = el
+          const materialMMR:MaterialMMR = {
+            tier,rank,wins,losses,leaguePoints
+          } 
           setUserInfoList([
             ...userInfoList,
             {
@@ -39,7 +43,8 @@ const InsertUser = () => {
               rank,
               wins,
               losses,
-              mmr:0
+              leaguePoints,
+              mmr: calculate(materialMMR)
             }
           ])
         }
