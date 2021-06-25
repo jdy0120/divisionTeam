@@ -13,9 +13,19 @@ const DivTeam = (props: Props) => {
     <>
       <div>
         {'레드팀'}
+        {redTeam.map((el,idx) => {
+          return (
+            <p key={idx}>{el.userId}</p>
+          )
+        })}
       </div>
       <div>
         {'블루팀'}
+        {blueTeam.map((el,idx) => {
+          return (
+            <p key={idx}>{el.userId}</p>
+          )
+        })}
       </div>
     </>
   );

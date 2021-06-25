@@ -17,6 +17,40 @@ const divUserId = (combinedID:string): string[] => {
   }
 }
 
+const underRankMMR:MaterialMMR = {
+  tier: 'SILVER',
+  rank: 'I',
+  wins: 1,
+  losses: 1,
+  leaguePoints: 0,
+} 
+
+const underRankUserInfo: UserInfo = {
+  userId: '',
+  ... underRankMMR,
+  position: 'None',
+  mmr: calculate(underRankMMR)
+}
+
+const getUserRankInfo = (userInfoList: UserInfo[]): UserInfo|void => {
+  userInfoList.map((el:any) => {
+    if (el.queueType === "RANKED_SOLO_5x5") {
+      const { tier,rank,wins,losses,leaguePoints } = el
+      const materialMMR:MaterialMMR = {
+        tier,rank,wins,losses,leaguePoints
+      } 
+      return {
+        tier,
+        rank,
+        wins,
+        losses,
+        leaguePoints,
+        mmr: calculate(materialMMR)
+      }
+    }
+  })
+}
+
 interface Props {
   userInfoList:UserInfo[],
   setUserInfoList:React.Dispatch<React.SetStateAction<UserInfo[]>>,
@@ -28,32 +62,37 @@ const InsertUser = (props: Props) => {
 
   const addId = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(divUserId(idState));
+    
     divUserId(idState)?.map(async(element) => {
-      const {id,name} =  await getUserAccountId(element)
       
-      const userInfo = await getUserInfo(id)
-      console.log(userInfo)
-      
-      userInfo.map((el:any) => {
-        if (el.queueType === "RANKED_SOLO_5x5") {
-          const { tier,rank,wins,losses,leaguePoints } = el
-          const materialMMR:MaterialMMR = {
-            tier,rank,wins,losses,leaguePoints
-          } 
-          setUserInfoList([
-            ...userInfoList,
-            {
-              userId: name,
-              tier,
-              rank,
-              wins,
-              losses,
-              leaguePoints,
-              mmr: calculate(materialMMR)
-            }
-          ])
+      try{
+        const {id,name} =  await getUserAccountId(element)
+
+        const userInfo = await getUserInfo(id)
+        
+        const userRankInfo = {
+          ...underRankUserInfo,
+          ...getUserRankInfo(userInfo),
+          userId: name
         }
-      })
+
+        setUserInfoList([
+          ...userInfoList,
+          userRankInfo
+        ])
+        
+      } catch(err) {
+        switch (err.message) {
+          case 'Not Exist UserID':
+            alert(`${element}는 찾을 수 없는 아이디입니다.`)
+            break
+          case 'Not Exist UserInfo':
+            alert(`${element}의 랭크정보가 없습니다.`)
+            break
+          default:
+            alert(`${err.message} 알 수 없는 에러`)
+        }
+      }
     });
   };
   

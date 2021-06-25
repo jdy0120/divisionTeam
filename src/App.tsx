@@ -1,7 +1,7 @@
 import React from 'react';
 import InsertUser from './components/InsertUser';
 import DivTeam from './components/DivTeam'
-import {UserInfo} from '../types/type'
+import { UserInfo } from '../types/type'
 
 function App() {
   const [userInfoList, setUserInfoList] = React.useState<UserInfo[]>([]);

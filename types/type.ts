@@ -1,7 +1,7 @@
 type Tier = 'IRON' | 'BRONZE' | 'SILVER' | 'GOLD' |
   'PLATINUM' | 'DIAMOND' | 'MASTER' | 'GRANDMASTER' | 'CHALLENGER';
 
-type Position = 'Top' | 'Junggle' | 'Mid' | 'Bottom' | 'Support'
+type Position = 'None'|'Top' | 'Junggle' | 'Mid' | 'Bottom' | 'Support'
 
 export type UserInfo = {
   userId: string,
