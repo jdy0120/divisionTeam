@@ -9,7 +9,6 @@ function App() {
 
   const clickDivTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
     setRunDivTeam(true)
-    // 팀나누는 계산
   }
 
   const clickSearchTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -18,11 +17,24 @@ function App() {
 
   return (
     <>
-      <InsertUser /> 
+      {runDivTeam === false ?
+        <div>
+          <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
+          
+            {userInfoList?.map((element,index) => {
+              return (
+                <p key={index}>{element.userId}</p>
+              );
+            })}
+          <button onClick={clickDivTeam}>{'팀 나누기'}</button>
+        </div>
+        
+      :
       <div>
-         <DivTeam userInfoList={userInfoList} />
-         <button onClick={clickSearchTeam}>{'인원 수정'}</button>
-       </div>
+        <DivTeam userInfoList={userInfoList} />
+        <button onClick={clickSearchTeam}>{'인원 수정'}</button>
+      </div>
+      }
     </>
   );
 }
