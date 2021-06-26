@@ -3,7 +3,6 @@ import { rankMMR, tierMMR, winPercentMMR } from '../assets/gameEnv';
 
 const winRateMMr = (wins:number,losses:number):number => {
   const winrate = Math.round((wins/(wins+losses)*100) * 10) / 10
-  console.log(winrate)
   return (winrate-50)*winPercentMMR
   //(winrate - 50) * winPercentMMr
 }
@@ -28,6 +27,5 @@ export const calculate = (userInfo: MaterialMMR) => {
   const convertWinRateMMR = winRateMMr(userInfo.wins,userInfo.losses)
   
   const convertTierMMR = calculateMMR(userInfo.rank,userInfo.tier,userInfo.leaguePoints)
-  console.log(convertWinRateMMR,convertTierMMR)
   return convertWinRateMMR + convertTierMMR
 }

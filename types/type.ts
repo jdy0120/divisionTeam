@@ -1,14 +1,15 @@
 type Tier = 'IRON' | 'BRONZE' | 'SILVER' | 'GOLD' |
   'PLATINUM' | 'DIAMOND' | 'MASTER' | 'GRANDMASTER' | 'CHALLENGER';
 
-type Position = 'None'|'Top' | 'Junggle' | 'Mid' | 'Bottom' | 'Support'
+export type Position = 'None'|'Top' | 'Junggle' | 'Mid' | 'ADC' | 'Support'
 
 export type UserInfo = {
-  userId: string,
+  userId?: string,
   tier: Tier,
   rank: string,
   wins: number,
   losses: number,
+  team: number, // 0: 아무팀, 1: 1번팀, 2: 2번팀
   leaguePoints: number,
   position?: Position,
   mmr: number,

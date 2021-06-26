@@ -11,12 +11,17 @@ export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
     for (let i = 0; i < (1<<userList.length); i++) {
         let teamOneMMR = 0
         let teamTwoMMR = 0
+        let count = 0
         for (let k = 0; k < userList.length; k++) {
             if (((1 << k) & i )) {
+                count += 1
                 teamOneMMR += userList[k].mmr
             } else {
                 teamTwoMMR += userList[k].mmr
             }
+        }
+        if (userList.length/2 !== count) {
+            continue
         }
         const teamDiff = teamOneMMR-teamTwoMMR
         if (diff === -1 || Math.abs(diff) > Math.abs(teamDiff)) {
@@ -24,6 +29,7 @@ export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
             teamBitMask = i
         }
     }
+    
     const teamOne = userList.filter((element,index) => {
         if (teamBitMask & (1<<index)) {
             return true

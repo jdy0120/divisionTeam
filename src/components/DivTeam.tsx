@@ -8,7 +8,7 @@ interface Props {
 
 const DivTeam = (props: Props) => {
   const {redTeam, blueTeam} = divisionTeam(props.userInfoList)
-  console.log(redTeam, blueTeam)
+  
   return (
     <>
       <div>
