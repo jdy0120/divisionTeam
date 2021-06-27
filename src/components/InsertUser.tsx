@@ -76,7 +76,7 @@ const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<a
         ...getUserRankInfo(userInfo),
         userId: name
       }
-      console.log(userRankInfo)
+      
 
       // 중복검사
       const confirmUserID = userInfoList.filter((element) => {
@@ -118,9 +118,9 @@ const InsertUser = (props: Props) => {
   const [idState, setIdState] = React.useState<string>('');
 
   const addId = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(divUserId(idState));
+    
     const response = await  getUserInfoList(idState,userInfoList)
-    console.log('response >>>', response)
+    
     setUserInfoList([
       ...response,
       ...userInfoList,
