@@ -9,8 +9,8 @@ interface UserInfoIDX extends UserInfo {
     idx:number
 }
 
-const makeBitMaskDivision = (userInfoList: UserInfoIDX[]): number => {
-    const topUserNoTeam = userInfoList.filter((el) => {
+const makeBitMaskDivision = (userInfoList: UserInfoIDX[], teamBitMask:number): boolean => {
+    const userNoTeam = userInfoList.filter((el) => {
         if (el.team === 0) {
             return true
         }
@@ -18,14 +18,14 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[]): number => {
     }).sort((a,b) => {
         return b.mmr - a.mmr
     })
-    const topUserOneTeam = userInfoList.filter((el) => {
+    const userOneTeam = userInfoList.filter((el) => {
         if (el.team === 1) {
             return true
         }
     }).sort((a,b) => {
         return b.mmr - a.mmr
     })
-    const topUserTwoTeam = userInfoList.filter((el) => {
+    const userTwoTeam = userInfoList.filter((el) => {
         if (el.team === 2) {
             return true
         }
@@ -33,25 +33,33 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[]): number => {
         return b.mmr - a.mmr
     })
 
-    
-    let allTopUser = []
-    if (topUserTwoTeam[0]) {
-        allTopUser.push(topUserTwoTeam[0])
+    let allUser = []
+    if (userTwoTeam[0]) {
+        allUser.push(userTwoTeam[0])
     }
-    if (topUserOneTeam[0]) {
-        allTopUser.push(topUserOneTeam[0])
+    if (userOneTeam[0]) {
+        allUser.push(userOneTeam[0])
     }
-    if (topUserNoTeam[0]) {
-        allTopUser.push( ...topUserNoTeam )
+    if (userNoTeam[0]) {
+        allUser.push( ...userNoTeam )
     }
-    if (allTopUser.length < 2) {
-        return 0
+
+    if (allUser.length < 2) {
+        return true
     } else {
-        let needDivBitMask = 0
-        for (let i = 0 ; i < 2 ; i++) {
-            needDivBitMask |= allTopUser[i].idx
+        let splitedIdx = allUser.splice(0,2)
+        const one = splitedIdx[0].idx
+        const two = splitedIdx[1].idx
+        
+        const compareOne = teamBitMask & (1<<one)
+        const compareTwo = teamBitMask & (1<<two)
+        if (compareOne && compareTwo) {
+            return false
         }
-        return needDivBitMask
+        if (compareOne === 0 && compareTwo === 0) {
+            return false
+        }
+        return true
     }
 }
 
@@ -84,27 +92,27 @@ const divisionPosition = (userInfoList:UserInfo[], teamBitMask:number) => {
     })
 
     if (topUser.length >= 2) {
-        if (teamBitMask && makeBitMaskDivision(topUser)) {
+        if (!makeBitMaskDivision(topUser,teamBitMask)) {
             return false
         }
     }
     if (jugUser.length >= 2) {
-        if (teamBitMask && makeBitMaskDivision(jugUser)) {
+        if (!makeBitMaskDivision(jugUser,teamBitMask)) {
             return false
         }
     }
     if (midUser.length >= 2) {
-        if (teamBitMask && makeBitMaskDivision(midUser)) {
+        if (!makeBitMaskDivision(midUser,teamBitMask)) {
             return false
         }
     }
     if (adcUser.length >= 2) {
-        if (teamBitMask && makeBitMaskDivision(adcUser)) {
+        if (!makeBitMaskDivision(adcUser,teamBitMask)) {
             return false
         }
     }
     if (supUser.length >= 2) {
-        if (teamBitMask && makeBitMaskDivision(supUser)) {
+        if (!makeBitMaskDivision(supUser,teamBitMask)) {
             return false
         }
     }
