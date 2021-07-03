@@ -1,18 +1,19 @@
-import { API_KEY } from '../assets/config'
+import axios from 'axios'
 
 export const getUserAccountId = async (userId:string): Promise<any>=> {
-    const response = await fetch(`/lol/summoner/v4/summoners/by-name/${userId}?api_key=${API_KEY}`)
-    if (response.ok) {
-        return response.json()
+    const response = await axios.get(`http://localhost:5000/seismic-sweep-318403/us-central1/getUserInfo/fetchUserAccountId?userId=${userId}`)
+    console.log(response.data)
+    if (response) {
+        return response.data.userAccountId
     } else {
         throw new Error('Not Exist UserID')
     }
 }
 
 export const getUserInfo = async (id:string): Promise<any> => {
-    const response = await fetch(`/lol/league/v4/entries/by-summoner/${id}?api_key=${API_KEY}`,)
-    if (response.ok) {
-        return response.json()
+    const response = await axios.get(`http://localhost:5000/seismic-sweep-318403/us-central1/getUserInfo/fetchUserInfo?id=${id}`,)
+    if (response) {
+        return response.data.userInfo
     } else {
         throw new Error('Not Exist UserInfo')
     }

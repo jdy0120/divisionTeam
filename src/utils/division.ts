@@ -18,6 +18,7 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[], teamBitMask:number): b
     }).sort((a,b) => {
         return b.mmr - a.mmr
     })
+
     const userOneTeam = userInfoList.filter((el) => {
         if (el.team === 1) {
             return true
@@ -25,6 +26,7 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[], teamBitMask:number): b
     }).sort((a,b) => {
         return b.mmr - a.mmr
     })
+
     const userTwoTeam = userInfoList.filter((el) => {
         if (el.team === 2) {
             return true
@@ -53,6 +55,7 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[], teamBitMask:number): b
         
         const compareOne = teamBitMask & (1<<one)
         const compareTwo = teamBitMask & (1<<two)
+
         if (compareOne && compareTwo) {
             return false
         }
@@ -93,6 +96,7 @@ const divisionPosition = (userInfoList:UserInfo[], teamBitMask:number) => {
 
     if (topUser.length >= 2) {
         if (!makeBitMaskDivision(topUser,teamBitMask)) {
+            
             return false
         }
     }
@@ -119,13 +123,22 @@ const divisionPosition = (userInfoList:UserInfo[], teamBitMask:number) => {
     return true
 }
 
+const checkSelectedTeam = (i:number,teamOne:number,teamTwo:number) => {
+    if ((i&teamOne) === teamOne && (i&teamTwo) === teamTwo) {
+        return false
+    }
+
+    return true
+}
+
 export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
     let teamBitMask = -1
     let diff = -1
+    const userListLength = userList.length
 
     let teamOneBitMask = 0
     let teamTwoBitMask = 0
-    for (let i = 0 ; i < userList.length; i++) {
+    for (let i = 0 ; i < userListLength; i++) {
         if (userList[i].team === 1) {
             teamOneBitMask |= (1 << i)
         } else if (userList[i].team === 2) {
@@ -136,9 +149,11 @@ export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
     console.log('team >>>', teamOneBitMask,teamTwoBitMask)
 
     for (let i = 0; i < (1<<userList.length); i++) {
+
         let teamOneMMR = 0
         let teamTwoMMR = 0
         let count = 0
+
         for (let k = 0; k < userList.length; k++) {
             if (((1 << k) & i )) {
                 count += 1
@@ -147,20 +162,19 @@ export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
                 teamTwoMMR += userList[k].mmr
             }
         }
-        if (userList.length/2 !== count) {
-            continue
-        }
 
-        if ((i&teamOneBitMask) || (i&teamTwoBitMask)){
+        if (userList.length/2 !== count) {
             continue
         }
 
         if (!divisionPosition(userList,i)) continue
 
+        if (checkSelectedTeam(i,teamOneBitMask,teamTwoBitMask)) continue
+
         const teamDiff = teamOneMMR-teamTwoMMR
         
         if (diff === -1 || Math.abs(diff) > Math.abs(teamDiff)) {
-            console.log(teamDiff,i)
+            console.log(i)
             diff = teamDiff
             teamBitMask = i
         }
