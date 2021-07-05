@@ -3,6 +3,11 @@ import InsertUser from './components/InsertUser';
 import DivTeam from './components/DivTeam'
 import { UserInfo, Position } from '../types/type'
 import { checkValidTeam } from './utils/checkValidTeam';
+import styled from 'styled-components';
+
+const SelectOptionUser = styled.div`
+  background-color: skyblue;
+`;
 
 function App() {
   const [userInfoList, setUserInfoList] = React.useState<UserInfo[]>([]);
@@ -91,7 +96,7 @@ function App() {
   return (
     <>
       {runDivTeam === false ?
-        <div>
+        <SelectOptionUser>
           <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
           
             {userInfoList?.map((element,index) => {
@@ -115,7 +120,7 @@ function App() {
               );
             })}
           <button onClick={clickDivTeam}>{'팀 나누기'}</button>
-        </div>
+        </SelectOptionUser>
       :
       <div>
         <DivTeam userInfoList={userInfoList} />
