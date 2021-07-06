@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/styled-components": "^5.1.9",
+    "@types/styled-components": "^5.1.11",
     "gh-pages": "^3.2.3"
   },
   "homepage": "https://jdy0120.github.io/divisionTeam",

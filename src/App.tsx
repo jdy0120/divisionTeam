@@ -6,7 +6,18 @@ import { checkValidTeam } from './utils/checkValidTeam';
 import styled from 'styled-components';
 
 const SelectOptionUser = styled.div`
-  background-color: skyblue;
+  width: 100%;
+  border: 1px solid red;
+  text-align: center;
+`;
+
+const UserOption = styled.div`
+  
+`;
+
+const PrintUserID = styled.p`
+  display: inline;
+  
 `;
 
 function App() {
@@ -94,15 +105,15 @@ function App() {
   },[userInfoList])
 
   return (
-    <>
+    <SelectOptionUser>
       {runDivTeam === false ?
-        <SelectOptionUser>
+        <>
           <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
           
             {userInfoList?.map((element,index) => {
               return (
-                <div key={index}>
-                  <p >{element.userId}</p>
+                <UserOption key={index}>
+                  <PrintUserID >{element.userId}</PrintUserID>
                   <select value={element.position} name={element.userId} onChange={positionChange}>
                     <option value="None">{`없음`}</option>
                     <option value="Top">{`탑`}</option>
@@ -116,18 +127,18 @@ function App() {
                     <option value="1">{`1팀`}</option>
                     <option value="2">{`2팀`}</option>
                   </select>
-                </div>
+                </UserOption>
               );
             })}
           <button onClick={clickDivTeam}>{'팀 나누기'}</button>
-        </SelectOptionUser>
+        </>
       :
       <div>
         <DivTeam userInfoList={userInfoList} />
         <button onClick={clickSearchTeam}>{'인원 수정'}</button>
       </div>
       }
-    </>
+    </SelectOptionUser>
   );
 }
 
