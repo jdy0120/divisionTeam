@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/divisionTeam/static/js/main.52fa77af.chunk.js",
-    "main.js.map": "/divisionTeam/static/js/main.52fa77af.chunk.js.map",
+    "main.js": "/divisionTeam/static/js/main.1b79714e.chunk.js",
+    "main.js.map": "/divisionTeam/static/js/main.1b79714e.chunk.js.map",
     "runtime-main.js": "/divisionTeam/static/js/runtime-main.2365b5d5.js",
     "runtime-main.js.map": "/divisionTeam/static/js/runtime-main.2365b5d5.js.map",
-    "static/js/2.a2cb1759.chunk.js": "/divisionTeam/static/js/2.a2cb1759.chunk.js",
-    "static/js/2.a2cb1759.chunk.js.map": "/divisionTeam/static/js/2.a2cb1759.chunk.js.map",
+    "static/js/2.d3c7330e.chunk.js": "/divisionTeam/static/js/2.d3c7330e.chunk.js",
+    "static/js/2.d3c7330e.chunk.js.map": "/divisionTeam/static/js/2.d3c7330e.chunk.js.map",
     "index.html": "/divisionTeam/index.html",
-    "static/js/2.a2cb1759.chunk.js.LICENSE.txt": "/divisionTeam/static/js/2.a2cb1759.chunk.js.LICENSE.txt"
+    "static/js/2.d3c7330e.chunk.js.LICENSE.txt": "/divisionTeam/static/js/2.d3c7330e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2365b5d5.js",
-    "static/js/2.a2cb1759.chunk.js",
-    "static/js/main.52fa77af.chunk.js"
+    "static/js/2.d3c7330e.chunk.js",
+    "static/js/main.1b79714e.chunk.js"
   ]
 }
