@@ -4,7 +4,7 @@ type Tier = 'IRON' | 'BRONZE' | 'SILVER' | 'GOLD' |
 export type Position = 'None'|'Top' | 'Junggle' | 'Mid' | 'ADC' | 'Support'
 
 export type UserInfo = {
-  userId?: string,
+  userId: string,
   tier: Tier,
   rank: string,
   wins: number,

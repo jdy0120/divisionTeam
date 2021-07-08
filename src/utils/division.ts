@@ -123,8 +123,11 @@ const divisionPosition = (userInfoList:UserInfo[], teamBitMask:number) => {
     return true
 }
 
-const checkSelectedTeam = (i:number,teamOne:number,teamTwo:number) => {
-    if ((i&teamOne) === teamOne && (i&teamTwo) === teamTwo) {
+const checkSelectedTeam = (userListLength:number, i:number,teamOne:number,teamTwo:number) => {
+
+    const reverseI = (1<<userListLength)-1-i
+
+    if ((i&teamOne) === teamOne && (reverseI&teamTwo) === teamTwo) {
         return false
     }
 
@@ -169,7 +172,7 @@ export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
 
         if (!divisionPosition(userList,i)) continue
 
-        if (checkSelectedTeam(i,teamOneBitMask,teamTwoBitMask)) continue
+        if (checkSelectedTeam(userListLength,i,teamOneBitMask,teamTwoBitMask)) continue
 
         const teamDiff = teamOneMMR-teamTwoMMR
         

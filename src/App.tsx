@@ -4,6 +4,7 @@ import DivTeam from './components/DivTeam'
 import { UserInfo, Position } from '../types/type'
 import { checkValidTeam } from './utils/checkValidTeam';
 import styled from 'styled-components';
+import DragNDrop from './components/DragNDrop';
 
 const SelectOptionUser = styled.div`
   width: 100%;
@@ -34,38 +35,6 @@ function App() {
 
   const clickSearchTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
     setRunDivTeam(false)
-  }
-
-  const positionChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
-    const position = e.target.value as Position
-    
-    const changeUserPosition = userInfoList.map((element) => {
-      if (element.userId === e.target.name) {
-        return {
-          ...element,
-          position: position
-        }
-      } else {
-        return {
-          ...element
-        }
-      }
-    })
-    try {
-      checkValidTeam(changeUserPosition)
-    } catch(err) {
-      switch (err.message) {
-        case 'overlapPosition':
-          alert('한 팀에 중복된 라인이 있습니다.')
-          break
-        case 'excessPersonnel':
-          alert('한 팀에 너무 많은 인원이 있습니다.')
-          break
-        default:
-          alert('알 수 없는 오류')
-      }
-    }
-    setUserInfoList(changeUserPosition)
   }
 
   const selectTeam = (e:React.ChangeEvent<HTMLSelectElement>) => {
@@ -109,27 +78,7 @@ function App() {
       {runDivTeam === false ?
         <>
           <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
-          
-            {userInfoList?.map((element,index) => {
-              return (
-                <UserOption key={index}>
-                  <PrintUserID >{element.userId}</PrintUserID>
-                  <select value={element.position} name={element.userId} onChange={positionChange}>
-                    <option value="None">{`없음`}</option>
-                    <option value="Top">{`탑`}</option>
-                    <option value="Junggle">{`정글`}</option>
-                    <option value="Mid">{`미드`}</option>
-                    <option value="ADC">{`원딜`}</option>
-                    <option value="Support">{`서폿`}</option>
-                  </select>
-                  <select value={element.team} name={element.userId} onChange={selectTeam}>
-                    <option value="0">{`상관없음`}</option>
-                    <option value="1">{`1팀`}</option>
-                    <option value="2">{`2팀`}</option>
-                  </select>
-                </UserOption>
-              );
-            })}
+          <DragNDrop userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
           <button onClick={clickDivTeam}>{'팀 나누기'}</button>
         </>
       :

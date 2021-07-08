@@ -46,6 +46,7 @@ const getUserRankInfo = (userInfoList: UserInfo[]): UserInfo|undefined => {
       } 
       
       return {
+        userId: '',
         tier,
         rank,
         wins,
