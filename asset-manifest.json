@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.js": "/divisionTeam/static/js/main.b3fbb35c.chunk.js",
-    "main.js.map": "/divisionTeam/static/js/main.b3fbb35c.chunk.js.map",
+    "main.css": "/divisionTeam/static/css/main.9af4ef48.chunk.css",
+    "main.js": "/divisionTeam/static/js/main.e7a60e62.chunk.js",
+    "main.js.map": "/divisionTeam/static/js/main.e7a60e62.chunk.js.map",
     "runtime-main.js": "/divisionTeam/static/js/runtime-main.2365b5d5.js",
     "runtime-main.js.map": "/divisionTeam/static/js/runtime-main.2365b5d5.js.map",
-    "static/js/2.fb2261e1.chunk.js": "/divisionTeam/static/js/2.fb2261e1.chunk.js",
-    "static/js/2.fb2261e1.chunk.js.map": "/divisionTeam/static/js/2.fb2261e1.chunk.js.map",
+    "static/js/2.459edc65.chunk.js": "/divisionTeam/static/js/2.459edc65.chunk.js",
+    "static/js/2.459edc65.chunk.js.map": "/divisionTeam/static/js/2.459edc65.chunk.js.map",
     "index.html": "/divisionTeam/index.html",
-    "static/js/2.fb2261e1.chunk.js.LICENSE.txt": "/divisionTeam/static/js/2.fb2261e1.chunk.js.LICENSE.txt"
+    "static/css/main.9af4ef48.chunk.css.map": "/divisionTeam/static/css/main.9af4ef48.chunk.css.map",
+    "static/js/2.459edc65.chunk.js.LICENSE.txt": "/divisionTeam/static/js/2.459edc65.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2365b5d5.js",
-    "static/js/2.fb2261e1.chunk.js",
-    "static/js/main.b3fbb35c.chunk.js"
+    "static/js/2.459edc65.chunk.js",
+    "static/css/main.9af4ef48.chunk.css",
+    "static/js/main.e7a60e62.chunk.js"
   ]
 }
