@@ -8,17 +8,21 @@ import DragNDrop from './components/DragNDrop';
 
 const SelectOptionUser = styled.div`
   width: 100%;
-  border: 1px solid red;
   text-align: center;
+  margin-top: 3rem;
 `;
 
-const UserOption = styled.div`
-  
-`;
+const DivTeamButton = styled.button`
+  margin-top: 10px;
+  width: 120px;
+  height: 50px;
+  border: 1px solid #BDBDC0;
+  border-radius: 2px;
+  background-color: white;
 
-const PrintUserID = styled.p`
-  display: inline;
-  
+  &:hover {
+    background-color: #BDBDC0;
+  }
 `;
 
 function App() {
@@ -79,12 +83,12 @@ function App() {
         <>
           <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
           <DragNDrop userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
-          <button onClick={clickDivTeam}>{'팀 나누기'}</button>
+          <DivTeamButton onClick={clickDivTeam}>{'팀 나누기'}</DivTeamButton>
         </>
       :
       <div>
         <DivTeam userInfoList={userInfoList} />
-        <button onClick={clickSearchTeam}>{'인원 수정'}</button>
+        <DivTeamButton onClick={clickSearchTeam}>{'인원 수정'}</DivTeamButton>
       </div>
       }
     </SelectOptionUser>

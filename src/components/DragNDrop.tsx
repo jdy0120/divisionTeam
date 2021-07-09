@@ -5,6 +5,7 @@ import { UserInfo, Position } from '../../types/type';
 import { checkValidTeam } from '../utils/checkValidTeam';
 
 const DragNDropStyle = styled.div`
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
 `;
@@ -12,7 +13,7 @@ const DragNDropStyle = styled.div`
 const DropStyle = styled.div`
     width: 250px;
     padding: 30px;
-    border: 1px solid blue;
+    border: 1px solid #BDBDC0;
     border-radius: 5px
 `;
 

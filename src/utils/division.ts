@@ -131,6 +131,10 @@ const checkSelectedTeam = (userListLength:number, i:number,teamOne:number,teamTw
         return false
     }
 
+    if ((reverseI&teamOne) === teamOne && (i&teamTwo) === teamTwo) {
+        return false
+    }
+
     return true
 }
 

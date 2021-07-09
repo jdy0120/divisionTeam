@@ -2,6 +2,14 @@ import React from 'react';
 import { UserInfo, MaterialMMR } from '../../types/type';
 import { getUserInfo, getUserAccountId } from '../utils/getUserInfo';
 import { calculate } from '../utils/calculate';
+import styled from 'styled-components';
+
+const Search = styled.input`
+  border: 0;
+`;
+
+const SearchButton = styled.button`
+`;
 
 const divUserId = (combinedID:string): string[] => {
   const regExp = /([a-z|A-z|0-9|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]){1,}(님이 로비에 참가하셨습니다.)/g
@@ -130,8 +138,8 @@ const InsertUser = (props: Props) => {
 
   return(
     <>
-      <input type="text" onChange={(e) => {setIdState(e.target.value)}} />
-      <button onClick={addId}>{`검색`}</button>
+      <Search type="text" onChange={(e) => {setIdState(e.target.value)}} />
+      <SearchButton onClick={addId}>{`검색`}</SearchButton>
     </>
   );
 }
