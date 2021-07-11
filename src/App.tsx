@@ -18,10 +18,12 @@ const DivTeamButton = styled.button`
   height: 50px;
   border: 1px solid #BDBDC0;
   border-radius: 2px;
-  background-color: white;
+  background-color: #BDBDC0;
+  color: #3E3F47;
 
   &:hover {
-    background-color: #BDBDC0;
+    background-color: #3E3F47;
+    color:  #BDBDC0;
   }
 `;
 

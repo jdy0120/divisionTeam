@@ -9,6 +9,14 @@ const Search = styled.input`
 `;
 
 const SearchButton = styled.button`
+  border: 0;
+  background-color: #BDBDC0;
+  color: #3E3F47;
+
+  &:hover {
+    background-color: #3E3F47;
+    color:  #BDBDC0;
+  }
 `;
 
 const divUserId = (combinedID:string): string[] => {
