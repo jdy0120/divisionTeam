@@ -2,6 +2,7 @@ import React from 'react';
 import { UserInfo } from '../../types/type';
 import { divisionTeam } from '../utils/division';
 import styled, { css } from 'styled-components';
+import { colors } from '../assets/color';
 
 interface TeamNameProps {
   teamColor: 'red'|'blue';
@@ -17,8 +18,9 @@ const PrintTeam = styled.div`
   width: 40%;
   min-height: 100px;
   margin: 10px;
-  border: 1px solid red;
-
+  border: 1px solid ${colors.line};
+  border-radius: 10px;
+  background-color: ${colors.box};
 `;
 
 const TeamName = styled.h4`
@@ -41,6 +43,18 @@ const TeamName = styled.h4`
   }}
 `;
 
+const NotDivTeam = styled.p`
+  font-siez: 2rem;
+  color: ${colors.fontColor};
+  font-weight: bold;
+`;
+
+const PrintUserID = styled.p`
+    font-size: 1rem;
+    color: ${colors.fontColor};
+    font-weight: bold;
+`;
+
 interface Props {
   userInfoList: UserInfo[]
 }
@@ -51,14 +65,14 @@ const DivTeam = (props: Props) => {
   return (
     <>
       {(redTeam.length === 0 || blueTeam.length === 0) ?
-        <p>{'팀을 나눌 수 없습니다.'}</p>
+        <NotDivTeam>{'팀을 나눌 수 없습니다.'}</NotDivTeam>
         :
         <DivTeamContainer>
           <PrintTeam>
             <TeamName teamColor='red'>{'레드팀'}</TeamName>
             {redTeam.map((el,idx) => {
               return (
-                <p key={idx}>{el.userId}</p>
+                <PrintUserID key={idx}>{el.userId}</PrintUserID>
               )
             })}
           </PrintTeam>
@@ -66,13 +80,12 @@ const DivTeam = (props: Props) => {
             <TeamName teamColor='blue'>{'블루팀'}</TeamName>
             {blueTeam.map((el,idx) => {
               return (
-                <p key={idx}>{el.userId}</p>
+                <PrintUserID key={idx}>{el.userId}</PrintUserID>
               )
             })}
           </PrintTeam>
         </DivTeamContainer>
       }
-      
     </>
   );
 }

@@ -4,12 +4,26 @@ import { getUserInfo, getUserAccountId } from '../utils/getUserInfo';
 import { calculate } from '../utils/calculate';
 import styled from 'styled-components';
 
+const InsertContainer = styled.div`
+  margin-bottom: 30px;
+`;
+
 const Search = styled.input`
-  border: 0;
+  padding-left: 20px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  width: 450px;
+  height: 35px;
 `;
 
 const SearchButton = styled.button`
-  border: 0;
+  margin-left: -70px;
+  outline: none;
+  border: none;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
   background-color: #BDBDC0;
   color: #3E3F47;
 
@@ -145,10 +159,10 @@ const InsertUser = (props: Props) => {
   };
 
   return(
-    <>
-      <Search type="text" onChange={(e) => {setIdState(e.target.value)}} />
+    <InsertContainer>
+      <Search placeholder='Name1, Name2, ...' type="text" onChange={(e) => {setIdState(e.target.value)}} />
       <SearchButton onClick={addId}>{`검색`}</SearchButton>
-    </>
+    </InsertContainer>
   );
 }
 export default InsertUser;

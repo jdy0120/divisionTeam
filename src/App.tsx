@@ -5,9 +5,10 @@ import { UserInfo, Position } from '../types/type'
 import { checkValidTeam } from './utils/checkValidTeam';
 import styled from 'styled-components';
 import DragNDrop from './components/DragNDrop';
+import { colors } from './assets/color'
 
 const SelectOptionUser = styled.div`
-  width: 100%;
+  min-width: 900px;
   text-align: center;
   margin-top: 3rem;
 `;
@@ -16,14 +17,16 @@ const DivTeamButton = styled.button`
   margin-top: 10px;
   width: 120px;
   height: 50px;
-  border: 1px solid #BDBDC0;
-  border-radius: 2px;
-  background-color: #BDBDC0;
-  color: #3E3F47;
+  border: 0px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: ${colors.innerBox};
+  color: ${colors.fontColor};
 
   &:hover {
-    background-color: #3E3F47;
+    background-color: ${colors.background};
     color:  #BDBDC0;
+    cursor: pointer;
   }
 `;
 

@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautif
 import styled from 'styled-components';
 import { UserInfo, Position } from '../../types/type';
 import { overlapPosition,  excessPersonnel } from '../utils/checkValidTeam';
+import { colors } from '../assets/color';
 
 const DragNDropStyle = styled.div`
     margin-top: 10px;
@@ -13,13 +14,20 @@ const DragNDropStyle = styled.div`
 const DropStyle = styled.div`
     width: 250px;
     padding: 30px;
-    border: 1px solid #BDBDC0;
-    border-radius: 5px
+    border: 1px solid ${colors.line};
+    background-color: ${colors.box};
+    border-radius: 5px;
 `;
 
 const PrintUserInfo = styled.div`
     display: flex;
     justify-content: space-between;
+`;
+
+const PrintUserID = styled.p`
+    font-size: 1rem;
+    color: ${colors.fontColor};
+    font-weight: bold;
 `;
 
 interface Props {
@@ -97,9 +105,9 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                             {...provided.dragHandleProps}
                                             {...provided.draggableProps}
                                         >
-                                            <p>
+                                            <PrintUserID>
                                                 {element.userId}
-                                            </p>
+                                            </PrintUserID>
                                             <select value={element.position} name={element.userId} onChange={positionChange}>
                                                 <option value="None">{`없음`}</option>
                                                 <option value="Top">{`탑`}</option>
@@ -134,9 +142,9 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                         {...provided.dragHandleProps}
                                         {...provided.draggableProps}
                                     >
-                                        <p>
+                                        <PrintUserID>
                                             {element.userId}
-                                        </p>
+                                        </PrintUserID>
                                         <select value={element.position} name={element.userId} onChange={positionChange}>
                                             <option value="None">{`없음`}</option>
                                             <option value="Top">{`탑`}</option>
@@ -172,9 +180,9 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                         {...provided.dragHandleProps}
                                         {...provided.draggableProps}
                                     >
-                                        <p>
+                                        <PrintUserID>
                                             {element.userId}
-                                        </p>
+                                        </PrintUserID>
                                         <select value={element.position} name={element.userId} onChange={positionChange}>
                                             <option value="None">{`없음`}</option>
                                             <option value="Top">{`탑`}</option>
