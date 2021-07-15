@@ -1,8 +1,7 @@
 import React from 'react';
 import InsertUser from './components/InsertUser';
 import DivTeam from './components/DivTeam'
-import { UserInfo, Position } from '../types/type'
-import { checkValidTeam } from './utils/checkValidTeam';
+import { UserInfo } from '../types/type'
 import styled from 'styled-components';
 import DragNDrop from './components/DragNDrop';
 import { colors } from './assets/color'
@@ -44,38 +43,6 @@ function App() {
 
   const clickSearchTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
     setRunDivTeam(false)
-  }
-
-  const selectTeam = (e:React.ChangeEvent<HTMLSelectElement>) => {
-    const team = parseInt(e.target.value)
-
-    const changeUserTeam = userInfoList.map((element) => {
-      if (element.userId === e.target.name) {
-        return {
-          ...element,
-          team: team
-        }
-      } else {
-        return {
-          ...element
-        }
-      }
-    })
-    try {
-      checkValidTeam(changeUserTeam)
-    } catch (err) {
-      switch (err.message) {
-        case 'overlapPosition':
-          alert('한 팀에 중복된 라인이 있습니다.')
-          break
-        case 'excessPersonnel':
-          alert('한 팀에 너무 많은 인원이 있습니다.')
-          break
-        default:
-          alert('알 수 없는 오류')
-      }
-    }
-    setUserInfoList(changeUserTeam)
   }
   
   React.useEffect(() => {

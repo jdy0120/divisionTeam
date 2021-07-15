@@ -23,6 +23,7 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[], teamBitMask:number): b
         if (el.team === 1) {
             return true
         }
+        return false
     }).sort((a,b) => {
         return b.mmr - a.mmr
     })
@@ -31,6 +32,7 @@ const makeBitMaskDivision = (userInfoList: UserInfoIDX[], teamBitMask:number): b
         if (el.team === 2) {
             return true
         }
+        return false
     }).sort((a,b) => {
         return b.mmr - a.mmr
     })
@@ -76,22 +78,27 @@ const divisionPosition = (userInfoList:UserInfo[], teamBitMask:number) => {
 
     const topUser = userInfoListWithIdx.filter((el) => {
         if (el.position === 'Top') return true
+        return false
     })
 
     const jugUser = userInfoListWithIdx.filter((el) => {
         if (el.position === 'Junggle') return true
+        return false
     })
 
     const midUser = userInfoListWithIdx.filter((el) => {
         if (el.position === 'Mid') return true
+        return false
     })
 
     const adcUser = userInfoListWithIdx.filter((el) => {
         if (el.position === 'ADC') return true
+        return false
     })
 
     const supUser = userInfoListWithIdx.filter((el) => {
         if (el.position === 'Support') return true
+        return false
     })
 
     if (topUser.length >= 2) {

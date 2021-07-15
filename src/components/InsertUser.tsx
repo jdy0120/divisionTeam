@@ -34,12 +34,17 @@ const SearchButton = styled.button`
 `;
 
 const divUserId = (combinedID:string): string[] => {
-  const regExp = /([a-z|A-z|0-9|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]){1,}(님이 로비에 참가하셨습니다.)/g
-  const divisionId = combinedID.match(regExp)
+  const convertUserId = combinedID.replace(/님이 로비에 참가하셨습니다./gi,',');
+  // const regExp = /([a-z|A-z|0-9|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]){1,}(님이 로비에 참가하셨습니다.)/g
+  // const divisionId = combinedID.match(regExp)
+
+  const divisionId = convertUserId.split(',');
 
   const userIdGroup = divisionId?.map((element) => {
-    return element.replace('님이 로비에 참가하셨습니다.','')
+    return element.trim()
   })
+
+  console.log(userIdGroup);
   if (divisionId === null) {
     return [combinedID]
   } else {
@@ -86,10 +91,13 @@ const getUserRankInfo = (userInfoList: UserInfo[]): UserInfo|undefined => {
         mmr: calculate(materialMMR)
       }
     }
+    return undefined
+
   }).filter((el) => {
     if (el) {
       return true
     }
+    return false
   })
   return userRankInfo[0]
 }
@@ -97,6 +105,9 @@ const getUserRankInfo = (userInfoList: UserInfo[]): UserInfo|undefined => {
 const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<any> => {
 
   const fetchUserInfoList = await Promise.all(divUserId(idState).map(async(element) => {
+    if (element === '') {
+      return
+    }
     try{
       const {id,name} =  await getUserAccountId(element)
 
@@ -112,6 +123,7 @@ const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<a
       // 중복검사
       const confirmUserID = userInfoList.filter((element) => {
         if (element.userId === name) return true
+        return false
       })
 
       if (confirmUserID.length === 0) {
@@ -135,7 +147,11 @@ const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<a
     }
   }))
 
-  const filtUndefinedData = fetchUserInfoList.filter((el) => {if (el) return true})
+  const filtUndefinedData = fetchUserInfoList.filter((el) => {
+    if (el) return true
+    
+    return false
+  })
   return filtUndefinedData
 }
 

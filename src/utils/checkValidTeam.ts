@@ -7,6 +7,7 @@ export const overlapPosition = (userInfoList:UserInfo[]):boolean => {
         if (el.team === 1 && el.position !== 'None') {
             return true
         }
+        return false
     }).map((el) => {
         return el.position
     })
@@ -20,6 +21,7 @@ export const overlapPosition = (userInfoList:UserInfo[]):boolean => {
         if (el.team === 2 && el.position !== 'None') {
             return true
         }
+        return false
     }).map((el) => {
         return el.position
     })
@@ -37,6 +39,7 @@ export const excessPersonnel = (userInfoList:UserInfo[]):boolean => {
         if (el.team === 1) {
             return true
         }
+        return false
     })
     
     if (teamOne.length > userInfoList.length/2) {
@@ -47,6 +50,7 @@ export const excessPersonnel = (userInfoList:UserInfo[]):boolean => {
         if (el.team === 2) {
             return true
         }
+        return false
     })
 
     if (teamTwo.length > userInfoList.length/2) {
