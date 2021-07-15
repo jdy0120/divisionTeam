@@ -1,9 +1,13 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { UserInfo, Position } from '../../types/type';
 import { overlapPosition,  excessPersonnel } from '../utils/checkValidTeam';
 import { colors } from '../assets/color';
+
+interface TeamTagProps {
+    teamNumber: number;
+}
 
 const DragNDropStyle = styled.div`
     margin-top: 10px;
@@ -12,6 +16,7 @@ const DragNDropStyle = styled.div`
 `;
 
 const DropStyle = styled.div`
+    position: relative;
     width: 250px;
     padding: 30px;
     border: 1px solid ${colors.line};
@@ -19,9 +24,52 @@ const DropStyle = styled.div`
     border-radius: 5px;
 `;
 
+const TeamTag = styled.p`
+    position: absolute;
+    top: -10px;
+
+    ${({teamNumber}:TeamTagProps) => {
+        if (teamNumber === 0) {
+            return css`
+                color: ${colors.nonTeam};
+            `;
+        }
+        
+    
+        else if (teamNumber === 1) {
+            return css`
+                color: ${colors.oneTeam};
+            `;
+        }
+
+        else if (teamNumber === 2) {
+            return css`
+                color: ${colors.twoTeam};
+            `;
+        }
+    }}
+`;
+
 const PrintUserInfo = styled.div`
+    padding: 0 5px 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: ${colors.innerBox};
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+`;
+
+const SelectUserPosition = styled.select`
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: ${colors.innerBox};
+    color: ${colors.white};
 `;
 
 const PrintUserID = styled.p`
@@ -93,6 +141,7 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                             {...provided.droppableProps}
                             ref={provided.innerRef}
                         >
+                            <TeamTag teamNumber={0}>{'상관없음'}</TeamTag>
                             {userInfoList.filter((el) => {
                                 if (el.team === 0) return true
                                 return false
@@ -108,14 +157,14 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                             <PrintUserID>
                                                 {element.userId}
                                             </PrintUserID>
-                                            <select value={element.position} name={element.userId} onChange={positionChange}>
+                                            <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
                                                 <option value="None">{`없음`}</option>
                                                 <option value="Top">{`탑`}</option>
                                                 <option value="Junggle">{`정글`}</option>
                                                 <option value="Mid">{`미드`}</option>
                                                 <option value="ADC">{`원딜`}</option>
                                                 <option value="Support">{`서폿`}</option>
-                                            </select>
+                                            </SelectUserPosition>
                                         </PrintUserInfo>
                                         }
                                     </Draggable>
@@ -130,6 +179,7 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
+                        <TeamTag teamNumber={1}>{'1팀'}</TeamTag>
                         {userInfoList.filter((el) => {
                             if (el.team === 1) return true
                             return false
@@ -145,14 +195,14 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                         <PrintUserID>
                                             {element.userId}
                                         </PrintUserID>
-                                        <select value={element.position} name={element.userId} onChange={positionChange}>
+                                        <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
                                             <option value="None">{`없음`}</option>
                                             <option value="Top">{`탑`}</option>
                                             <option value="Junggle">{`정글`}</option>
                                             <option value="Mid">{`미드`}</option>
                                             <option value="ADC">{`원딜`}</option>
                                             <option value="Support">{`서폿`}</option>
-                                        </select>
+                                        </SelectUserPosition>
                                     </PrintUserInfo>
                                     }
                                 </Draggable>
@@ -168,6 +218,7 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
+                        <TeamTag teamNumber={2}>{'2팀'}</TeamTag>
                         {userInfoList.filter((el) => {
                             if (el.team === 2) return true
                             return false
@@ -183,14 +234,14 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                         <PrintUserID>
                                             {element.userId}
                                         </PrintUserID>
-                                        <select value={element.position} name={element.userId} onChange={positionChange}>
+                                        <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
                                             <option value="None">{`없음`}</option>
                                             <option value="Top">{`탑`}</option>
                                             <option value="Junggle">{`정글`}</option>
                                             <option value="Mid">{`미드`}</option>
                                             <option value="ADC">{`원딜`}</option>
                                             <option value="Support">{`서폿`}</option>
-                                        </select>
+                                        </SelectUserPosition>
                                     </PrintUserInfo>
                                     }
                                 </Draggable>
