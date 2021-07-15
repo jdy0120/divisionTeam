@@ -9,7 +9,7 @@ const InsertContainer = styled.div`
 `;
 
 const Search = styled.input`
-  padding-left: 20px;
+  padding: 5px 80px 5px 20px;
   border-radius: 25px;
   outline: none;
   border: none;
@@ -149,7 +149,7 @@ const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<a
 
   const filtUndefinedData = fetchUserInfoList.filter((el) => {
     if (el) return true
-    
+
     return false
   })
   return filtUndefinedData

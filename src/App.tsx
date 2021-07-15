@@ -4,7 +4,8 @@ import DivTeam from './components/DivTeam'
 import { UserInfo } from '../types/type'
 import styled from 'styled-components';
 import DragNDrop from './components/DragNDrop';
-import { colors } from './assets/color'
+import { colors } from './assets/color';
+import Adsense from './components/Adsense';
 
 const SelectOptionUser = styled.div`
   min-width: 900px;
@@ -63,6 +64,7 @@ function App() {
         <DivTeamButton onClick={clickSearchTeam}>{'인원 수정'}</DivTeamButton>
       </div>
       }
+      <Adsense />
     </SelectOptionUser>
   );
 }
