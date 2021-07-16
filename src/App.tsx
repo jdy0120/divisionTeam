@@ -34,6 +34,10 @@ function App() {
   const [userInfoList, setUserInfoList] = React.useState<UserInfo[]>([]);
   const [runDivTeam, setRunDivTeam] = React.useState<boolean>(false);
 
+  const userLang = navigator.language;
+
+  console.log(userLang);
+
   const clickDivTeam = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (userInfoList.length%2 !== 0) {
       alert('인원을 짝수로 맞춰주세요')
