@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import { UserInfo, Position } from '../../types/type';
 import { overlapPosition,  excessPersonnel } from '../utils/checkValidTeam';
 import { colors } from '../assets/color';
+import DeleteUser from './DeleteUser';
 
 interface TeamTagProps {
     teamNumber: number;
@@ -58,6 +59,7 @@ const PrintUserInfo = styled.div`
     margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &:last-child {
         margin-bottom: 0;
@@ -157,14 +159,17 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                             <PrintUserID>
                                                 {element.userId}
                                             </PrintUserID>
-                                            <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
-                                                <option value="None">{`없음`}</option>
-                                                <option value="Top">{`탑`}</option>
-                                                <option value="Junggle">{`정글`}</option>
-                                                <option value="Mid">{`미드`}</option>
-                                                <option value="ADC">{`원딜`}</option>
-                                                <option value="Support">{`서폿`}</option>
-                                            </SelectUserPosition>
+                                            <div>
+                                                <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
+                                                    <option value="None">{`없음`}</option>
+                                                    <option value="Top">{`탑`}</option>
+                                                    <option value="Junggle">{`정글`}</option>
+                                                    <option value="Mid">{`미드`}</option>
+                                                    <option value="ADC">{`원딜`}</option>
+                                                    <option value="Support">{`서폿`}</option>
+                                                </SelectUserPosition>
+                                                <DeleteUser userInfoList={userInfoList} setUserInfoList={setUserInfoList} userIndex={index} />   
+                                            </div>
                                         </PrintUserInfo>
                                         }
                                     </Draggable>
@@ -195,14 +200,17 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                         <PrintUserID>
                                             {element.userId}
                                         </PrintUserID>
-                                        <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
-                                            <option value="None">{`없음`}</option>
-                                            <option value="Top">{`탑`}</option>
-                                            <option value="Junggle">{`정글`}</option>
-                                            <option value="Mid">{`미드`}</option>
-                                            <option value="ADC">{`원딜`}</option>
-                                            <option value="Support">{`서폿`}</option>
-                                        </SelectUserPosition>
+                                        <div>
+                                                <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
+                                                    <option value="None">{`없음`}</option>
+                                                    <option value="Top">{`탑`}</option>
+                                                    <option value="Junggle">{`정글`}</option>
+                                                    <option value="Mid">{`미드`}</option>
+                                                    <option value="ADC">{`원딜`}</option>
+                                                    <option value="Support">{`서폿`}</option>
+                                                </SelectUserPosition>
+                                                <DeleteUser userInfoList={userInfoList} setUserInfoList={setUserInfoList} userIndex={index} />   
+                                            </div>
                                     </PrintUserInfo>
                                     }
                                 </Draggable>
@@ -234,14 +242,17 @@ const DragNDrop = ({userInfoList, setUserInfoList}: Props) => {
                                         <PrintUserID>
                                             {element.userId}
                                         </PrintUserID>
-                                        <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
-                                            <option value="None">{`없음`}</option>
-                                            <option value="Top">{`탑`}</option>
-                                            <option value="Junggle">{`정글`}</option>
-                                            <option value="Mid">{`미드`}</option>
-                                            <option value="ADC">{`원딜`}</option>
-                                            <option value="Support">{`서폿`}</option>
-                                        </SelectUserPosition>
+                                        <div>
+                                                <SelectUserPosition value={element.position} name={element.userId} onChange={positionChange}>
+                                                    <option value="None">{`없음`}</option>
+                                                    <option value="Top">{`탑`}</option>
+                                                    <option value="Junggle">{`정글`}</option>
+                                                    <option value="Mid">{`미드`}</option>
+                                                    <option value="ADC">{`원딜`}</option>
+                                                    <option value="Support">{`서폿`}</option>
+                                                </SelectUserPosition>
+                                                <DeleteUser userInfoList={userInfoList} setUserInfoList={setUserInfoList} userIndex={index} />   
+                                            </div>
                                     </PrintUserInfo>
                                     }
                                 </Draggable>
