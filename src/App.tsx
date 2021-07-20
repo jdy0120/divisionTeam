@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import DragNDrop from './components/DragNDrop';
 import { colors } from './assets/color';
 import Adsense from './components/Adsense';
+import Menual from './components/menual/Menual';
 
 const SelectOptionUser = styled.div`
   min-width: 900px;
@@ -58,7 +59,10 @@ function App() {
     <SelectOptionUser>
       {runDivTeam === false ?
         <>
-          <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
+          <div>
+            <Menual/>
+            <InsertUser userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
+          </div>
           <DragNDrop userInfoList={userInfoList} setUserInfoList={setUserInfoList}/>
           <DivTeamButton onClick={clickDivTeam}>{'팀 나누기'}</DivTeamButton>
         </>
