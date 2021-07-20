@@ -2,7 +2,7 @@ import React from 'react';
 import { UserInfo } from '../../types/type';
 import { divisionTeam } from '../utils/division';
 import styled, { css } from 'styled-components';
-import { colors } from '../assets/color';
+import { colors } from '../style/color';
 
 interface TeamNameProps {
   teamColor: 'red'|'blue';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../assets/color';
+import { colors } from '../../style/color';
 import MenualContent from './MenualContent';
 
 const Background = styled.div`

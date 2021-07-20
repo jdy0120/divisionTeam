@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautif
 import styled, { css } from 'styled-components';
 import { UserInfo, Position } from '../../types/type';
 import { overlapPosition,  excessPersonnel } from '../utils/checkValidTeam';
-import { colors } from '../assets/color';
+import { colors } from '../style/color';
 import DeleteUser from './DeleteUser';
 
 interface TeamTagProps {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserInfo } from '../../types/type';
 import styled from 'styled-components';
-import { colors } from '../assets/color';
+import { colors } from '../style/color';
 
 const DeleteButton = styled.button`
     background-color: ${colors.innerBox};

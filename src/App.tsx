@@ -4,14 +4,23 @@ import DivTeam from './components/DivTeam'
 import { UserInfo } from '../types/type'
 import styled from 'styled-components';
 import DragNDrop from './components/DragNDrop';
-import { colors } from './assets/color';
+import { colors } from './style/color';
 import Adsense from './components/Adsense';
 import Menual from './components/menual/Menual';
 
 const SelectOptionUser = styled.div`
-  min-width: 900px;
   text-align: center;
   margin-top: 3rem;
+
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    border: 1px solid red;
+  }
+
+  @media ${(props) => props.theme.laptop} {
+    min-width: 900px;
+    border: 1px solid blue;
+  }
 `;
 
 const DivTeamButton = styled.button`

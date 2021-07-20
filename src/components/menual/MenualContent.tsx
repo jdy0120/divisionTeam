@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../assets/color';
+import { colors } from '../../style/color';
 
 const ContentText = styled.p`
     color: ${colors.fontColor};
