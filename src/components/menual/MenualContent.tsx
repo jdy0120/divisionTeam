@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../style/color';
+import multiSearch1 from '../../img/multiSearch1.png';
 
 const ContentText = styled.p`
     color: ${colors.fontColor};
+`;
+
+const ContentImg = styled.img`
+    width: 100px;
 `;
 
 const MenualContent = () => {
@@ -15,6 +20,7 @@ const MenualContent = () => {
             <ContentText>
                 {'멀티서치 가능합니다.'}
             </ContentText>
+            <ContentImg src={multiSearch1} alt="" />
             <ContentText>
                 {'유저 카드를 드래그해서 1팀 또는 2팀으로 이동할 수 있습니다.'}
             </ContentText>

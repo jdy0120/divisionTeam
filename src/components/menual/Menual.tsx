@@ -21,11 +21,13 @@ const Menual = () => {
     const [showQuestion, setShowQuestion] = React.useState(false);
 
     const openModal = (e:React.MouseEvent) => {
-        setShowModal(!showModal)
+        setShowModal(!showModal);
+        setShowQuestion(false);
     }
 
     const openQuestionModal = (e:React.MouseEvent) => {
         setShowQuestion(!showQuestion);
+        setShowModal(false);
     }
 
     return (

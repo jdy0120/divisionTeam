@@ -15,6 +15,10 @@ const Search = styled.input`
   border: none;
   width: 450px;
   height: 35px;
+
+  @media ${(props) => props.theme.mobile} {
+    width: auto;
+  }
 `;
 
 const SearchButton = styled.button`

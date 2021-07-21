@@ -14,12 +14,10 @@ const SelectOptionUser = styled.div`
 
   @media ${(props) => props.theme.mobile} {
     width: 100%;
-    border: 1px solid red;
   }
 
   @media ${(props) => props.theme.laptop} {
     min-width: 900px;
-    border: 1px solid blue;
   }
 `;
 

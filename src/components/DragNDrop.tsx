@@ -64,6 +64,11 @@ const PrintUserInfo = styled.div`
     &:last-child {
         margin-bottom: 0;
     }
+
+    @media ${(props) => props.theme.mobile} {
+        display: inline-block;
+
+      }
 `;
 
 const SelectUserPosition = styled.select`
@@ -72,12 +77,20 @@ const SelectUserPosition = styled.select`
     border-radius: 5px;
     background-color: ${colors.innerBox};
     color: ${colors.white};
+    
+    @media ${(props) => props.theme.mobile} {
+        font-size: 0.5rem;
+      }
 `;
 
 const PrintUserID = styled.p`
     font-size: 1rem;
     color: ${colors.fontColor};
     font-weight: bold;
+
+    @media ${(props) => props.theme.mobile} {
+        font-size: 0.5rem;
+      }
 `;
 
 interface Props {
