@@ -61,7 +61,6 @@ interface Props {
 
 const DivTeam = (props: Props) => {
   const {redTeam, blueTeam} = divisionTeam(props.userInfoList)
-  console.log(redTeam, blueTeam)
   return (
     <>
       {(redTeam.length === 0 || blueTeam.length === 0) ?
@@ -69,16 +68,16 @@ const DivTeam = (props: Props) => {
         :
         <DivTeamContainer>
           <PrintTeam>
-            <TeamName teamColor='red'>{'레드팀'}</TeamName>
-            {redTeam.map((el,idx) => {
+            <TeamName teamColor='blue'>{'블루팀'}</TeamName>
+            {blueTeam.map((el,idx) => {
               return (
                 <PrintUserID key={idx}>{el.userId}</PrintUserID>
               )
             })}
           </PrintTeam>
           <PrintTeam>
-            <TeamName teamColor='blue'>{'블루팀'}</TeamName>
-            {blueTeam.map((el,idx) => {
+            <TeamName teamColor='red'>{'레드팀'}</TeamName>
+            {redTeam.map((el,idx) => {
               return (
                 <PrintUserID key={idx}>{el.userId}</PrintUserID>
               )

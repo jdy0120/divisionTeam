@@ -188,7 +188,6 @@ export const divisionTeam= (userList: UserInfo[]): DivedTeam => {
         const teamDiff = teamOneMMR-teamTwoMMR
         
         if (diff === -1 || Math.abs(diff) > Math.abs(teamDiff)) {
-            console.log(i)
             diff = teamDiff
             teamBitMask = i
         }

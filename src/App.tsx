@@ -59,7 +59,6 @@ function App() {
   }
   
   React.useEffect(() => {
-    console.log(userInfoList)
   },[userInfoList])
 
   return (
