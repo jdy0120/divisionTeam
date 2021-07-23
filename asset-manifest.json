@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/divisionTeam/static/css/main.e6b5e098.chunk.css",
-    "main.js": "/divisionTeam/static/js/main.c2d5bdcf.chunk.js",
-    "main.js.map": "/divisionTeam/static/js/main.c2d5bdcf.chunk.js.map",
+    "main.js": "/divisionTeam/static/js/main.ec3aa1cc.chunk.js",
+    "main.js.map": "/divisionTeam/static/js/main.ec3aa1cc.chunk.js.map",
     "runtime-main.js": "/divisionTeam/static/js/runtime-main.2365b5d5.js",
     "runtime-main.js.map": "/divisionTeam/static/js/runtime-main.2365b5d5.js.map",
     "static/js/2.563b0bf5.chunk.js": "/divisionTeam/static/js/2.563b0bf5.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.2365b5d5.js",
     "static/js/2.563b0bf5.chunk.js",
     "static/css/main.e6b5e098.chunk.css",
-    "static/js/main.c2d5bdcf.chunk.js"
+    "static/js/main.ec3aa1cc.chunk.js"
   ]
 }
