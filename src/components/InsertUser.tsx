@@ -113,7 +113,7 @@ const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<a
       return
     }
     try{
-      const {id,name} =  await getUserAccountId(element)
+      const {id,name} =  await getUserAccountId(element);
 
       const userInfo = await getUserInfo(id)
 
@@ -139,10 +139,10 @@ const getUserInfoList = async (idState:string,userInfoList:UserInfo[]):Promise<a
       
     } catch(err) {
       switch (err.message) {
-        case 'Not Exist UserID':
+        case 'Data not found - summoner not found':
           alert(`${element}는 찾을 수 없는 아이디입니다.`)
           break
-        case 'Not Exist UserInfo':
+        case 'Bad Request - Exception decrypting undefined':
           alert(`${element}의 랭크정보를 불러올 수 없습니다.`)
           break
         default:

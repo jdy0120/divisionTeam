@@ -33,8 +33,8 @@ const Menual = () => {
     return (
         <>
             <MenualText onClick={openModal}>{showModal ? '닫기' : '사용방법'}</MenualText>
-            <SplitMenu>{'    |    '}</SplitMenu>
-            <MenualText onClick={openQuestionModal}>{showQuestion ? '닫기' : '문의하기'}</MenualText>
+            {/* <SplitMenu>{'    |    '}</SplitMenu>
+            <MenualText onClick={openQuestionModal}>{showQuestion ? '닫기' : '문의하기'}</MenualText> */}
             <MenualModal showModal={showModal} setShowModal={setShowModal}/>
         </>
     );
