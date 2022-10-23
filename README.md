@@ -5,6 +5,5 @@
 https://jdy0120.github.io/divisionTeam/ 에서 직접 사용해보실 수 있습니다.
 
 front-end : React v17.0.2
-back-end : node.js v16.18.0
 database : MySQL
-hosting : firebase
+proxy-server : https://github.com/jdy0120/divisionTeamProxyServer
